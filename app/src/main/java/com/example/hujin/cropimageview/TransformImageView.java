@@ -158,30 +158,8 @@ public class TransformImageView extends View {
                 }
                 float dX = xTranslate - mMoveLastX;
                 float dY = yTranslate - mMoveLastY;
-
-                //缩放后的图片宽度大于限制宽度时
-                if (mCurrentBitmapwWidth > (mMoveLimitRight - mMoveLimitLeft)) {
-                    //只有在图片可左右移动时，增加x
-                    boolean toLeftOfView = dX > 0 && mBitmapLeft < mMoveLimitLeft;
-                    boolean toRightOfView = dX < 0 && mBitmapRight > mMoveLimitRight;
-                    if (toLeftOfView || toRightOfView) {
-                        mFocusX = dX;
-                    } else {
-                        mFocusX = 0;
-                    }
-                }
-
-                //缩放后的图片高度大于限制宽度时
-                if (mCurrentBitmapHeight > (mMoveLimitBottom - mMoveLimitTop)) {
-                    //只有在图片可上下移动时，增加y
-                    boolean toTopOfView = dY > 0 && mBitmapTop < mMoveLimitTop;
-                    boolean toBottomOfView = dY < 0 && mBitmapBottom > mMoveLimitBottom;
-                    if (toTopOfView || toBottomOfView) {
-                        mFocusY = dY;
-                    } else {
-                        mFocusY = 0;
-                    }
-                }
+                mFocusX = dX;
+                mFocusY = dY;
                 mMoveLastX = xTranslate;
                 mMoveLastY = yTranslate;
                 break;
